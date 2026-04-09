@@ -31,8 +31,8 @@
   .logo-mark { width:36px; height:36px; background:var(--neon); border-radius:6px; display:flex; align-items:center; justify-content:center; font-family:'Oswald',sans-serif; font-weight:700; font-size:13px; color:var(--dark); letter-spacing:-0.5px; }
   .logo-text { font-family:'Oswald',sans-serif; font-weight:700; font-size:18px; letter-spacing:2px; text-transform:uppercase; color:var(--white); }
   .logo-text span { color:var(--neon); }
-  .header-badge { background:var(--neon); color:var(--dark); font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:11px; padding:4px 10px; border-radius:20px; text-transform:uppercase; letter-spacing:1px; animation:pulsebadge 2s ease-in-out infinite; }
-  @keyframes pulsebadge { 0%,100%{opacity:1} 50%{opacity:.65} }
+  .header-badge { background:var(--neon); color:var(--dark); font-family:'Oswald',sans-serif; font-weight:700; font-size:14px; padding:9px 18px; border-radius:10px; text-transform:uppercase; letter-spacing:2px; text-decoration:none; display:inline-block; animation:pulsebadge 2s ease-in-out infinite; white-space:nowrap; }
+  @keyframes pulsebadge { 0%,100%{opacity:1;box-shadow:0 0 12px var(--neon-glow)} 50%{opacity:.85;box-shadow:0 0 24px var(--neon-glow)} }
 
   /* TABS */
   .tabs { display:flex; overflow-x:auto; scrollbar-width:none; margin:0 -20px; padding:0 20px; }
@@ -166,7 +166,7 @@
       <div class="logo-mark" style="display:none;">FF</div>
       <div class="logo-text" style="display:none;">FFW<span>31</span></div>
     </div>
-    <div class="header-badge">● Live</div>
+    <a href="https://alteregoeventsllc.ticketspice.com/05-22-26-anniversary-weekend-2026" class="header-badge">Buy Tickets</a>
   </div>
   <div class="tabs">
     <button class="tab active" data-tab="today">Today</button>
