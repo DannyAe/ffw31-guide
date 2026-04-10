@@ -51,14 +51,10 @@
   .mini-btn-dim { border:1px solid rgba(200,255,0,.45); color:var(--neon); }
 
   /* NAV */
-  .nav-bar { display:flex; align-items:center; justify-content:space-between; padding:8px 0 12px; }
-  .nav-current { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:13px; text-transform:uppercase; letter-spacing:2px; color:var(--neon); }
-  .nav-toggle { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:11px; text-transform:uppercase; letter-spacing:1.5px; color:var(--text-dim); background:none; border:1px solid var(--card-border); border-radius:8px; padding:7px 14px; cursor:pointer; }
-  .nav-menu { display:none; margin:0 -20px; border-top:1px solid var(--card-border); }
-  .nav-menu.open { display:block; }
-  .nav-item { display:block; width:100%; padding:15px 22px; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:14px; text-transform:uppercase; letter-spacing:2px; color:var(--text-dim); background:none; border:none; border-bottom:1px solid var(--card-border); text-align:left; cursor:pointer; transition:color .15s; }
-  .nav-item:last-child { border-bottom:none; }
-  .nav-item.active { color:var(--neon); background:var(--neon-dim); }
+  .nav-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:6px; padding:8px 0 12px; }
+  .nav-item { padding:9px 4px; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:11px; text-transform:uppercase; letter-spacing:1px; color:var(--text-dim); background:var(--card); border:1px solid var(--card-border); border-radius:8px; text-align:center; cursor:pointer; transition:all .15s; white-space:nowrap; }
+  .nav-item.active { color:var(--dark); background:var(--neon); border-color:var(--neon); }
+  .nav-item:not(.active):hover { color:var(--text); border-color:rgba(200,255,0,.3); }
 
   /* PANELS */
   .panel { display:none; padding:20px; }
@@ -187,11 +183,7 @@
     </div>
     <a href="https://alteregoeventsllc.ticketspice.com/05-22-26-anniversary-weekend-2026" class="header-badge">Buy Tickets</a>
   </div>
-  <div class="nav-bar">
-    <span class="nav-current" id="nav-current">Home</span>
-    <button class="nav-toggle" id="nav-toggle">☰ Menu</button>
-  </div>
-  <div class="nav-menu" id="nav-menu">
+  <div class="nav-grid">
     <button class="nav-item active" data-tab="home">Home</button>
     <button class="nav-item" data-tab="today">Today</button>
     <button class="nav-item" data-tab="schedule">Schedule</button>
@@ -532,11 +524,6 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-  // Nav menu toggle
-  document.getElementById('nav-toggle').addEventListener('click', function() {
-    document.getElementById('nav-menu').classList.toggle('open');
-  });
-
   // Nav item navigation
   document.querySelectorAll('.nav-item').forEach(item => {
     item.addEventListener('click', () => {
@@ -544,8 +531,6 @@
       document.querySelectorAll('.panel').forEach(x => x.classList.remove('active'));
       item.classList.add('active');
       document.getElementById(item.dataset.tab).classList.add('active');
-      document.getElementById('nav-current').textContent = item.textContent.trim();
-      document.getElementById('nav-menu').classList.remove('open');
       if (item.dataset.tab === 'map' && !window._mapInit) initMap();
     });
   });
